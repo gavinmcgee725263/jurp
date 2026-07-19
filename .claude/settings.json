@@ -5,23 +5,9 @@
         "source": "github",
         "repo": "21st-dev/claude-code-plugin"
       }
-    },
-    "impeccable": {
-      "source": {
-        "source": "github",
-        "repo": "pbakaus/impeccable"
-      }
-    },
-    "claude-plugins-official": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-official"
-      }
     }
   },
   "enabledPlugins": {
-    "21st@21st": true,
-    "impeccable@impeccable": true,
-    "frontend-design@claude-plugins-official": true
+    "21st@21st": true
   }
 }
