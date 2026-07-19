@@ -3,331 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smash Burger Co — Smashed Fresh, Served Hot</title>
-  <meta name="description" content="Smash Burger Co. crushes fresh beef on a ripping-hot griddle for crispy, caramelized edges. Order online or visit us — smashed fresh, served hot.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+  <title>Villa Vermiglia — Above the valley, the last light stays longest</title>
+  <meta name="description" content="Villa Vermiglia, a modernist glass-and-travertine estate in the Serra hills. Walk the house in a cinematic 3D tour, then request a private viewing.">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23DC2626'/><rect x='7' y='14' width='18' height='4' rx='2' fill='%23450A0A'/><path d='M8 12 a8 5 0 0 1 16 0 z' fill='%23A16207'/><rect x='8' y='20' width='16' height='3' rx='1.5' fill='%23A16207'/></svg>">
+  <link rel="preload" href="fonts/italiana-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23201b30'/><path d='M6 22 L16 8 L26 22 Z' fill='none' stroke='%23e4573d' stroke-width='2'/><rect x='13' y='17' width='6' height='5' fill='%23e4573d'/></svg>">
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.min.js"
+      }
+    }
+  </script>
+  <script type="module" src="js/main.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <a class="skip-link" href="#estate">Skip to content</a>
 
-  <header class="site-header">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="Smash Burger Co — home">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <circle cx="16" cy="16" r="15" fill="var(--color-primary)"/>
-          <path d="M8 13 a8 5 0 0 1 16 0 z" fill="#E8B04B"/>
-          <rect x="7" y="14.5" width="18" height="3.5" rx="1.75" fill="#450A0A"/>
-          <rect x="8" y="19.5" width="16" height="3" rx="1.5" fill="#E8B04B"/>
-        </svg>
-        <span class="brand-name">Smash Burger&nbsp;Co</span>
-      </a>
+  <div class="scene-layer" aria-hidden="true">
+    <canvas id="scene-canvas"></canvas>
+  </div>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
-        <svg class="icon-burger" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="visually-hidden">Menu</span>
-      </button>
-
-      <div class="nav-menu" id="nav-menu">
-        <ul class="nav-links">
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#method">The Smash Method</a></li>
-          <li><a href="#locations">Locations</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-        </ul>
-        <a class="btn btn-primary" href="#order">Order Now</a>
-      </div>
+  <header>
+    <nav class="site-nav" aria-label="Main">
+      <a class="wordmark" href="#top">Villa Vermiglia</a>
+      <ul class="nav-links">
+        <li class="hide-mobile"><a href="#estate">The Estate</a></li>
+        <li class="hide-small"><a href="#residence">The Residence</a></li>
+        <li class="hide-mobile"><a href="#location">The Hills</a></li>
+        <li><a class="btn" href="#enquire">Private viewing</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main id="main">
-    <!-- ============ HERO ============ -->
-    <section class="hero" id="top">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Est. 2019 · Griddle-smashed daily</p>
-          <h1>Smashed fresh.<br><span class="accent-text">Served hot.</span></h1>
-          <p class="lede">We crush fresh, never-frozen beef onto a ripping-hot griddle until the edges go crispy and caramelized. That crust is the whole point — and we chase it on every single patty.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="#order">Order Now</a>
-            <a class="btn btn-outline btn-lg" href="#menu">See the Menu</a>
+  <main id="top">
+
+    <!-- Hero — the scene shows through -->
+    <section class="hero" aria-label="Villa Vermiglia">
+      <h1 class="hero-title">
+        <span class="line"><span>Villa</span></span>
+        <span class="line"><span>Vermiglia</span></span>
+      </h1>
+      <p class="hero-tag">Above the valley, the last light stays longest.</p>
+      <p class="hero-meta">
+        <span>Serra Hills</span><span class="dot" aria-hidden="true">·</span>
+        <span>Northern Italy</span><span class="dot" aria-hidden="true">·</span>
+        <span>A single residence</span>
+      </p>
+      <div class="hero-scrollcue" aria-hidden="true">
+        <span>Descend</span>
+        <span class="rule"></span>
+      </div>
+    </section>
+
+    <!-- Estate narrative -->
+    <section class="estate solid" id="estate">
+      <div class="container">
+        <div class="estate-grid">
+          <h2 class="section-title">The Estate</h2>
+          <div>
+            <p class="estate-lede">
+              Two slabs of travertine hold eleven rooms of glass above the
+              Serra valley — a house built to do one thing:
+              <em>keep the evening</em>.
+            </p>
+            <p class="estate-body">
+              Completed in 2024 to a design by Studio Ferro Levi, the villa
+              faces due west along the ridge. Every principal room opens to
+              the same horizon; the pool runs to its edge and stops, and the
+              hills do the rest. Below, the valley folds away toward the sea.
+              There are no neighbours in view. There is very little to hear.
+            </p>
+            <p class="fact-strip">
+              <span><strong>1,450 m²</strong> residence</span>
+              <span><strong>8.2 ha</strong> of hillside</span>
+              <span><strong>6</strong> bedrooms</span>
+              <span><strong>2024</strong> completed</span>
+            </p>
           </div>
-          <ul class="hero-stats" aria-label="Quick facts">
-            <li><strong>90&nbsp;sec</strong><span>patty to plate</span></li>
-            <li><strong>100%</strong><span>fresh chuck</span></li>
-            <li><strong>3</strong><span>locations</span></li>
-          </ul>
         </div>
-
-        <div class="hero-art reveal" aria-hidden="true">
-          <svg class="burger-svg" viewBox="0 0 360 340" role="img" focusable="false">
-            <ellipse cx="180" cy="316" rx="140" ry="16" fill="#450A0A" opacity="0.12"/>
-            <!-- bottom bun -->
-            <path d="M70 268 q0 34 110 34 q110 0 110 -34 l0 -18 q0 -12 -12 -12 l-196 0 q-12 0 -12 12 z" fill="#D9913B"/>
-            <path d="M70 250 q110 18 220 0 l0 12 q-110 20 -220 0 z" fill="#B8722A" opacity="0.55"/>
-            <!-- patty 2 -->
-            <path d="M62 240 q0 -26 118 -26 q118 0 118 26 q0 18 -118 18 q-118 0 -118 -18 z" fill="#5C2E1E"/>
-            <circle cx="105" cy="234" r="4" fill="#3E1D12"/><circle cx="180" cy="240" r="5" fill="#3E1D12"/><circle cx="255" cy="233" r="4" fill="#3E1D12"/>
-            <!-- cheese -->
-            <path d="M55 218 l250 0 q6 0 6 6 q0 8 -10 8 l-6 0 q-2 14 -14 14 q-10 0 -12 -12 l-178 0 q-1 12 -13 12 q-13 0 -14 -14 l-3 0 q-12 0 -12 -8 q0 -6 6 -6 z" fill="#F3A712"/>
-            <!-- patty 1 -->
-            <path d="M66 210 q0 -26 114 -26 q114 0 114 26 q0 16 -114 16 q-114 0 -114 -16 z" fill="#6B3A26"/>
-            <circle cx="120" cy="202" r="4" fill="#4A2415"/><circle cx="200" cy="208" r="5" fill="#4A2415"/><circle cx="252" cy="200" r="4" fill="#4A2415"/>
-            <!-- tomato -->
-            <rect x="72" y="172" width="216" height="14" rx="7" fill="#DC2626"/>
-            <!-- lettuce -->
-            <path d="M60 172 q10 -18 25 -4 q12 -16 26 -3 q12 -15 26 -3 q13 -15 27 -3 q13 -14 27 -3 q14 -14 27 -2 q15 -13 27 -2 q16 -12 25 4 l0 8 q-105 14 -210 0 z" fill="#65A30D"/>
-            <path d="M60 172 q10 -18 25 -4 q12 -16 26 -3 q12 -15 26 -3 q13 -15 27 -3 q13 -14 27 -3 q14 -14 27 -2 q15 -13 27 -2 q16 -12 25 4 l0 4 q-105 16 -210 0 z" fill="#84CC16" opacity="0.7"/>
-            <!-- top bun -->
-            <path d="M62 160 q0 -92 118 -92 q118 0 118 92 q0 10 -12 10 l-212 0 q-12 0 -12 -10 z" fill="#E8B04B"/>
-            <path d="M78 120 q30 -38 102 -38 q40 0 68 14 q-34 -28 -86 -24 q-62 6 -84 48 z" fill="#F5CB7E" opacity="0.65"/>
-            <!-- sesame -->
-            <g fill="#FBEED3">
-              <ellipse cx="128" cy="104" rx="7" ry="4" transform="rotate(-18 128 104)"/>
-              <ellipse cx="178" cy="90" rx="7" ry="4" transform="rotate(8 178 90)"/>
-              <ellipse cx="228" cy="106" rx="7" ry="4" transform="rotate(20 228 106)"/>
-              <ellipse cx="152" cy="132" rx="7" ry="4" transform="rotate(12 152 132)"/>
-              <ellipse cx="205" cy="130" rx="7" ry="4" transform="rotate(-14 205 130)"/>
-              <ellipse cx="102" cy="136" rx="6" ry="3.5" transform="rotate(-26 102 136)"/>
-              <ellipse cx="254" cy="136" rx="6" ry="3.5" transform="rotate(24 254 136)"/>
-            </g>
-            <!-- steam -->
-            <g class="steam" stroke="#450A0A" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.25">
-              <path d="M140 46 q-8 -14 0 -26"/>
-              <path d="M180 38 q-8 -14 0 -26"/>
-              <path d="M220 46 q-8 -14 0 -26"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <div class="hero-band" aria-hidden="true">
-        <p>CRISPY EDGES · CARAMELIZED CRUST · FRESH DAILY · CRISPY EDGES · CARAMELIZED CRUST · FRESH DAILY · CRISPY EDGES · CARAMELIZED CRUST · FRESH DAILY ·</p>
       </div>
     </section>
 
-    <!-- ============ MENU ============ -->
-    <section class="section" id="menu">
+    <!-- 3D walkthrough -->
+    <section class="tour" id="residence" aria-label="Interactive walkthrough of the residence">
+      <div class="tour-ui">
+        <div class="tour-head">
+          <h2>The Residence</h2>
+          <p class="tour-hint" id="tour-hint">Drag to look around&ensp;·&ensp;Arrow keys to move room to room</p>
+        </div>
+        <div class="tour-foot">
+          <ul class="room-rail" id="room-rail" aria-label="Rooms"></ul>
+          <div class="tour-caption">
+            <p class="room-name" id="room-name" aria-live="polite">Arrival</p>
+            <p class="room-note" id="room-note">The drive turns, the hills open, and the house appears against the last of the sun.</p>
+            <div class="tour-controls">
+              <button type="button" id="tour-prev" aria-label="Previous room">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" id="tour-next" aria-label="Next room">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materials -->
+    <section class="materials solid">
       <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">The lineup</p>
-          <h2>Signature Smashes</h2>
-          <p class="section-sub">Every burger starts as a fresh ball of chuck, smashed thin, seasoned on the flat-top, and stacked on a toasted potato bun.</p>
-        </header>
-
-        <div class="menu-grid">
-          <article class="menu-card reveal">
-            <div class="menu-card-tag">Most&nbsp;loved</div>
-            <h3>The O.G. Smash</h3>
-            <p>Double smashed patties, American cheese, shredded lettuce, house pickles, Smash Sauce.</p>
-            <div class="menu-card-foot">
-              <span class="price" aria-label="Price: 8 dollars 90 cents">$8.90</span>
-              <a class="btn btn-small btn-outline" href="#order">Add to order</a>
-            </div>
+        <h2 class="section-title">A house in three materials</h2>
+        <div class="material-list">
+          <article class="material">
+            <div class="swatch swatch-travertine" role="img" aria-label="Travertine — warm, striated pale stone"></div>
+            <h3>Roman travertine</h3>
+            <p>Quarried at Tivoli, laid in book-matched slabs. It holds the day's heat past midnight — the house is warm to the hand long after the sun is gone.</p>
           </article>
-
-          <article class="menu-card reveal">
-            <h3>Smoky Gold</h3>
-            <p>Double patties, smoked gouda, crispy onions, bourbon-BBQ glaze, pickled jalapeños.</p>
-            <div class="menu-card-foot">
-              <span class="price" aria-label="Price: 10 dollars 50 cents">$10.50</span>
-              <a class="btn btn-small btn-outline" href="#order">Add to order</a>
-            </div>
+          <article class="material">
+            <div class="swatch swatch-oak" role="img" aria-label="Smoked oak — deep brown grain"></div>
+            <h3>Smoked oak</h3>
+            <p>Fumed, brushed, and finished with oil. Floors, joinery, and the long library wall are cut from the same twelve trees.</p>
           </article>
-
-          <article class="menu-card reveal">
-            <h3>Green Machine</h3>
-            <p>Crispy smashed veggie patty, avocado, sprouts, herbed aioli on a toasted seeded bun.</p>
-            <div class="menu-card-foot">
-              <span class="price" aria-label="Price: 9 dollars 20 cents">$9.20</span>
-              <a class="btn btn-small btn-outline" href="#order">Add to order</a>
-            </div>
-          </article>
-
-          <article class="menu-card reveal">
-            <h3>Triple Threat</h3>
-            <p>Three patties, triple cheese, grilled onions, extra Smash Sauce. Bring napkins.</p>
-            <div class="menu-card-foot">
-              <span class="price" aria-label="Price: 12 dollars 40 cents">$12.40</span>
-              <a class="btn btn-small btn-outline" href="#order">Add to order</a>
-            </div>
-          </article>
-
-          <article class="menu-card reveal">
-            <h3>Crispy Bird</h3>
-            <p>Buttermilk-fried chicken thigh, hot honey, slaw, pickles on a potato bun.</p>
-            <div class="menu-card-foot">
-              <span class="price" aria-label="Price: 10 dollars 90 cents">$10.90</span>
-              <a class="btn btn-small btn-outline" href="#order">Add to order</a>
-            </div>
-          </article>
-
-          <article class="menu-card reveal">
-            <h3>Griddle Fries</h3>
-            <p>Twice-cooked skin-on fries with smash salt. Make them "loaded" — you know you want to.</p>
-            <div class="menu-card-foot">
-              <span class="price" aria-label="Price: 4 dollars 50 cents">$4.50</span>
-              <a class="btn btn-small btn-outline" href="#order">Add to order</a>
-            </div>
+          <article class="material">
+            <div class="swatch swatch-bronze" role="img" aria-label="Patinated bronze — dark metal with warm highlights"></div>
+            <h3>Patinated bronze</h3>
+            <p>Every window frame, handle, and stair rail. Left unlacquered, it darkens a little each year the house is lived in.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ METHOD ============ -->
-    <section class="section section-dark" id="method">
+    <!-- Particulars -->
+    <section class="particulars" id="particulars">
       <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow eyebrow-light">Why smash?</p>
-          <h2>The Smash Method</h2>
-          <p class="section-sub">More surface on the griddle means more Maillard reaction — the browning that turns beef into flavor. It's science you can taste.</p>
-        </header>
-
-        <ol class="method-grid">
-          <li class="method-card reveal">
-            <svg class="method-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-              <circle cx="24" cy="26" r="12" fill="none" stroke="currentColor" stroke-width="2.5"/>
-              <path d="M24 6v6M14 9l3 5M34 9l-3 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-            <h3><span class="step-num" aria-hidden="true">01</span> Ball it fresh</h3>
-            <p>Fresh chuck is ground every morning and hand-rolled into loose 75-gram balls. Never pressed, never frozen.</p>
-          </li>
-          <li class="method-card reveal">
-            <svg class="method-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-              <rect x="8" y="28" width="32" height="6" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/>
-              <path d="M24 8v14M16 16l8 6 8-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3><span class="step-num" aria-hidden="true">02</span> Smash it hard</h3>
-            <p>Onto a 230&nbsp;°C griddle, pressed paper-thin for ten seconds. Maximum contact, maximum crust.</p>
-          </li>
-          <li class="method-card reveal">
-            <svg class="method-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-              <path d="M10 34 q14 8 28 0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M14 26 q-4 -8 4 -12M24 24 q-4 -8 4 -12M34 26 q-4 -8 4 -12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-            <h3><span class="step-num" aria-hidden="true">03</span> Serve it hot</h3>
-            <p>Cheese melts on the flat-top, buns toast in beef fat, and your burger hits the counter in ninety seconds.</p>
-          </li>
-        </ol>
+        <div class="particulars-grid">
+          <div class="particulars-intro">
+            <h2 class="section-title">Particulars</h2>
+            <p>The facts, plainly stated. Everything else, the walkthrough shows better than we could write it.</p>
+          </div>
+          <dl>
+            <div class="row"><dt>Residence</dt><dd>1,450 m²</dd></div>
+            <div class="row"><dt>Land</dt><dd>8.2 hectares</dd></div>
+            <div class="row"><dt>Bedrooms</dt><dd>6</dd></div>
+            <div class="row"><dt>Bathrooms</dt><dd>8</dd></div>
+            <div class="row"><dt>Pool</dt><dd>25 m, west-facing infinity edge</dd></div>
+            <div class="row"><dt>Cellar</dt><dd>4,000 bottles at 13 °C</dd></div>
+            <div class="row"><dt>Architect</dt><dd>Studio Ferro Levi</dd></div>
+            <div class="row"><dt>Completed</dt><dd>2024</dd></div>
+            <div class="row price"><dt>Price</dt><dd>On application</dd></div>
+          </dl>
+        </div>
       </div>
     </section>
 
-    <!-- ============ LOCATIONS ============ -->
-    <section class="section" id="locations">
+    <!-- Location -->
+    <section class="location solid" id="location">
       <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Find us</p>
-          <h2>Three Griddles, One City</h2>
-          <p class="section-sub">Walk-ins always welcome. Kitchens open until close — hours below are current as of this week.</p>
-        </header>
-
         <div class="location-grid">
-          <article class="location-card reveal">
-            <h3>Downtown</h3>
-            <p class="location-addr">214 Griddle Street<br>Open daily · 11:00 – 22:00</p>
-            <p class="location-note">Counter seating + patio</p>
-            <a class="text-link" href="#order">Order from Downtown<span aria-hidden="true"> →</span></a>
-          </article>
-          <article class="location-card reveal">
-            <h3>Riverside</h3>
-            <p class="location-addr">88 Ferry Landing<br>Open daily · 11:00 – 23:00</p>
-            <p class="location-note">Drive-thru + late-night window</p>
-            <a class="text-link" href="#order">Order from Riverside<span aria-hidden="true"> →</span></a>
-          </article>
-          <article class="location-card reveal">
-            <h3>Market Hall</h3>
-            <p class="location-addr">Stall 12, Old Market Hall<br>Tue – Sun · 11:00 – 20:00</p>
-            <p class="location-note">Grab-and-go kiosk</p>
-            <a class="text-link" href="#order">Order from Market Hall<span aria-hidden="true"> →</span></a>
-          </article>
+          <svg class="contour-map" viewBox="0 0 520 420" role="img" aria-label="Contour map of the Serra hills with Villa Vermiglia marked on the western ridge">
+            <g fill="none" stroke="currentColor" stroke-width="1">
+              <path class="contour" d="M60 390 C 20 330, 30 250, 90 210 C 150 170, 160 110, 230 90 C 300 70, 380 80, 430 130 C 480 180, 490 260, 450 320 C 410 380, 320 400, 240 395 C 170 391, 100 400, 60 390 Z"/>
+              <path class="contour" d="M100 370 C 65 320, 70 260, 120 225 C 170 190, 180 140, 240 122 C 300 105, 365 115, 408 155 C 450 195, 458 260, 425 308 C 392 356, 315 375, 248 371 C 190 368, 132 378, 100 370 Z"/>
+              <path class="contour" d="M140 348 C 112 310, 115 265, 155 238 C 195 211, 205 168, 255 153 C 305 139, 355 148, 390 180 C 424 212, 430 262, 403 300 C 376 338, 312 352, 258 349 C 212 347, 165 355, 140 348 Z"/>
+              <path class="contour" d="M180 325 C 160 297, 163 265, 192 245 C 221 225, 230 192, 268 181 C 306 170, 343 177, 369 201 C 394 225, 399 262, 379 290 C 359 318, 310 328, 269 326 C 235 325, 199 331, 180 325 Z"/>
+              <path class="contour" d="M220 302 C 207 284, 210 262, 229 249 C 248 236, 255 214, 280 207 C 305 200, 329 205, 346 220 C 362 235, 366 259, 353 277 C 340 295, 308 302, 281 301 C 258 300, 233 306, 220 302 Z"/>
+              <path class="contour" d="M255 280 C 248 270, 250 258, 260 251 C 271 243, 275 231, 289 227 C 303 223, 316 226, 325 234 C 334 243, 336 256, 329 266 C 322 276, 305 280, 290 279 C 278 279, 262 283, 255 280 Z"/>
+            </g>
+            <g class="estate-mark">
+              <circle cx="262" cy="254" r="4.5" fill="currentColor"/>
+              <circle class="mark-ring" cx="262" cy="254" r="11" fill="none" stroke="currentColor" stroke-width="1"/>
+              <line x1="273" y1="254" x2="330" y2="254" stroke="currentColor" stroke-width="1"/>
+            </g>
+            <text class="estate-label" x="338" y="258">VILLA VERMIGLIA</text>
+          </svg>
+          <div>
+            <h2 class="section-title">The Serra Hills</h2>
+            <p class="location-body">
+              A thousand metres above the coast road, on the last ridge before
+              the valley turns. The estate keeps its own olive terraces and a
+              kilometre of private track; the nearest village is a ten-minute
+              descent, and keeps a very good table.
+            </p>
+            <ul class="distance-list">
+              <li><span class="place">Milan Malpensa</span><span class="time">55 min</span></li>
+              <li><span class="place">The sea at Levanto</span><span class="time">40 min</span></li>
+              <li><span class="place">Private airfield</span><span class="time">25 min</span></li>
+              <li><span class="place">Village and market</span><span class="time">10 min</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ REVIEWS ============ -->
-    <section class="section section-tint" id="reviews">
+    <!-- Enquire -->
+    <section class="enquire" id="enquire">
       <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Word on the street</p>
-          <h2>People Are Talking (With Their Mouths Full)</h2>
-        </header>
-
-        <div class="review-grid">
-          <figure class="review-card reveal">
-            <div class="stars" role="img" aria-label="Rated 5 out of 5 stars">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        <div class="enquire-grid">
+          <div class="enquire-copy">
+            <h2 class="section-title">A private viewing</h2>
+            <p>
+              The house is shown by appointment, in the late afternoon —
+              it insists on being seen at the hour it was designed for.
+              Tell us when suits you, and we will arrange the rest.
+            </p>
+          </div>
+          <form class="enquire-form" id="enquire-form" novalidate>
+            <div class="field" data-field="name">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+              <p class="field-error" aria-live="polite"></p>
             </div>
-            <blockquote>"The crust on these patties should be illegal. I've stopped ordering burgers anywhere else — nothing compares."</blockquote>
-            <figcaption>— Maya R., regular since 2020</figcaption>
-          </figure>
-
-          <figure class="review-card reveal">
-            <div class="stars" role="img" aria-label="Rated 5 out of 5 stars">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <div class="field-row">
+              <div class="field" data-field="email">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required>
+                <p class="field-error" aria-live="polite"></p>
+              </div>
+              <div class="field" data-field="date">
+                <label for="f-date">Preferred date</label>
+                <input id="f-date" name="date" type="date">
+                <p class="field-error" aria-live="polite"></p>
+              </div>
             </div>
-            <blockquote>"Ninety seconds from order to tray and it still tastes like someone's grandpa spent all day on it. Witchcraft."</blockquote>
-            <figcaption>— Deion K., Riverside drive-thru loyalist</figcaption>
-          </figure>
-
-          <figure class="review-card reveal">
-            <div class="stars" role="img" aria-label="Rated 5 out of 5 stars">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            <div class="field" data-field="message">
+              <label for="f-message">Message <span aria-hidden="true">— optional</span></label>
+              <textarea id="f-message" name="message" placeholder="Anything we should know before you visit"></textarea>
+              <p class="field-error" aria-live="polite"></p>
             </div>
-            <blockquote>"Took the Green Machine skeptics from my office. They're not skeptics anymore. Send help, we go every Friday."</blockquote>
-            <figcaption>— Priya S., Market Hall crowd</figcaption>
-          </figure>
+            <button class="btn" type="submit" id="enquire-submit">Request viewing</button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </form>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ ORDER CTA ============ -->
-    <section class="section order-cta" id="order">
-      <div class="container order-inner reveal">
-        <h2>Hungry yet?</h2>
-        <p>Order ahead for pickup or delivery — your smash hits the griddle the moment you tap "place order".</p>
-        <div class="hero-actions">
-          <a class="btn btn-invert btn-lg" href="#top">Start an Order</a>
-          <a class="btn btn-ghost btn-lg" href="#locations">Find a Location</a>
-        </div>
-        <p class="order-note">Online ordering is a demo placeholder on this site.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <p class="brand-name footer-brand">Smash Burger Co</p>
-        <p class="footer-tag">Smashed fresh. Served hot. Since 2019.</p>
-      </div>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#method">The Smash Method</a></li>
-          <li><a href="#locations">Locations</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-        </ul>
-      </nav>
-      <p class="footer-copy">© 2026 Smash Burger Co. All beef, no bull.</p>
-    </div>
+    <span class="wordmark">Villa Vermiglia</span>
+    <span>Represented by Ferro &amp; Sole Private Estates, Milano</span>
+    <span class="colophon">A fictional estate, built end-to-end as a design study — the house exists only in the walkthrough above.</span>
   </footer>
-
-  <script src="vendor/gsap.min.js" defer></script>
-  <script src="script.js" defer></script>
 </body>
 </html>
