@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Villa Vermiglia — Above the valley, the last light stays longest</title>
-  <meta name="description" content="Villa Vermiglia, a modernist glass-and-travertine estate in the Serra hills. Walk the house in a cinematic 3D tour, then request a private viewing.">
+  <title>Fairway House — a Florida vacation rental with a backyard built for play</title>
+  <meta name="description" content="Walk the whole house in 3D before you book: three bright bedrooms, a spa shower, and a backyard with its own putting green and pergola bar. Book on Airbnb.">
   <link rel="stylesheet" href="styles.css">
-  <link rel="preload" href="fonts/italiana-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23201b30'/><path d='M6 22 L16 8 L26 22 Z' fill='none' stroke='%23e4573d' stroke-width='2'/><rect x='13' y='17' width='6' height='5' fill='%23e4573d'/></svg>">
+  <link rel="preload" href="fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23ffffff'/><path d='M10 26 V7 l12 4.5 -12 4.5' fill='none' stroke='%232e8f5b' stroke-width='2.6' stroke-linejoin='round'/></svg>">
   <script src="vendor/gsap.min.js" defer></script>
   <script src="vendor/ScrollTrigger.min.js" defer></script>
   <script src="vendor/lenis.min.js" defer></script>
@@ -22,7 +21,7 @@
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#estate">Skip to content</a>
+  <a class="skip-link" href="#backyard">Skip to content</a>
 
   <div class="scene-layer" aria-hidden="true">
     <canvas id="scene-canvas"></canvas>
@@ -30,83 +29,57 @@
 
   <header>
     <nav class="site-nav" aria-label="Main">
-      <a class="wordmark" href="#top">Villa Vermiglia</a>
+      <a class="wordmark" href="#top"><span class="flag" aria-hidden="true">⛳</span>Fairway House</a>
       <ul class="nav-links">
-        <li class="hide-mobile"><a href="#estate">The Estate</a></li>
-        <li class="hide-small"><a href="#residence">The Residence</a></li>
-        <li class="hide-mobile"><a href="#location">The Hills</a></li>
-        <li><a class="btn" href="#enquire">Private viewing</a></li>
+        <li class="hide-small"><a href="#residence">The Tour</a></li>
+        <li class="hide-mobile"><a href="#backyard">The Backyard</a></li>
+        <li class="hide-mobile"><a href="#details">Details</a></li>
+        <li><a class="btn" href="https://www.airbnb.com/rooms/1695135612631356099" target="_blank" rel="noopener">Book on Airbnb</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="top">
 
-    <!-- Hero — the scene shows through -->
-    <section class="hero" aria-label="Villa Vermiglia">
-      <h1 class="hero-title">
-        <span class="line"><span>Villa</span></span>
-        <span class="line"><span>Vermiglia</span></span>
-      </h1>
-      <p class="hero-tag">Above the valley, the last light stays longest.</p>
-      <p class="hero-meta">
-        <span>Serra Hills</span><span class="dot" aria-hidden="true">·</span>
-        <span>Northern Italy</span><span class="dot" aria-hidden="true">·</span>
-        <span>A single residence</span>
-      </p>
-      <div class="hero-scrollcue" aria-hidden="true">
-        <span>Descend</span>
-        <span class="rule"></span>
-      </div>
-    </section>
-
-    <!-- Estate narrative -->
-    <section class="estate solid" id="estate">
-      <div class="container">
-        <div class="estate-grid">
-          <h2 class="section-title">The Estate</h2>
-          <div>
-            <p class="estate-lede">
-              Two slabs of travertine hold eleven rooms of glass above the
-              Serra valley — a house built to do one thing:
-              <em>keep the evening</em>.
-            </p>
-            <p class="estate-body">
-              Completed in 2024 to a design by Studio Ferro Levi, the villa
-              faces due west along the ridge. Every principal room opens to
-              the same horizon; the pool runs to its edge and stops, and the
-              hills do the rest. Below, the valley folds away toward the sea.
-              There are no neighbours in view. There is very little to hear.
-            </p>
-            <p class="fact-strip">
-              <span><strong>1,450 m²</strong> residence</span>
-              <span><strong>8.2 ha</strong> of hillside</span>
-              <span><strong>6</strong> bedrooms</span>
-              <span><strong>2024</strong> completed</span>
-            </p>
-          </div>
+    <!-- Hero — the 3D house in daylight -->
+    <section class="hero" aria-label="Fairway House">
+      <div class="hero-card">
+        <h1 class="hero-title">A backyard built for <em>play</em></h1>
+        <p class="hero-sub">
+          Three bright bedrooms, a spa shower, and your own putting green
+          under the string lights — all of Florida's sun, none of the lines.
+        </p>
+        <p class="hero-meta">
+          <span>Sleeps 6</span><span class="dot" aria-hidden="true">·</span>
+          <span>3 bedrooms</span><span class="dot" aria-hidden="true">·</span>
+          <span>2 baths</span><span class="dot" aria-hidden="true">·</span>
+          <span>Putting green</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="https://www.airbnb.com/rooms/1695135612631356099" target="_blank" rel="noopener">Book on Airbnb</a>
+          <a class="btn btn-ghost" href="#residence">Walk the house</a>
         </div>
       </div>
     </section>
 
     <!-- 3D walkthrough -->
-    <section class="tour" id="residence" aria-label="Interactive walkthrough of the residence">
+    <section class="tour" id="residence" aria-label="Interactive walkthrough of the house">
       <div class="tour-ui">
         <div class="tour-head">
-          <h2>The Residence</h2>
+          <h2>Walk the house</h2>
           <p class="tour-hint" id="tour-hint">Drag to look around&ensp;·&ensp;Arrow keys to move room to room</p>
         </div>
         <div class="tour-foot">
           <ul class="room-rail" id="room-rail" aria-label="Rooms"></ul>
           <div class="tour-caption">
-            <p class="room-name" id="room-name" aria-live="polite">Arrival</p>
-            <p class="room-note" id="room-note">The drive turns, the hills open, and the house appears against the last of the sun.</p>
+            <p class="room-name" id="room-name" aria-live="polite">Curb side</p>
+            <p class="room-note" id="room-note">Fresh paint, palm out front, and parking for two cars back-to-back in the drive.</p>
             <div class="tour-controls">
               <button type="button" id="tour-prev" aria-label="Previous room">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
               <button type="button" id="tour-next" aria-label="Next room">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
             </div>
           </div>
@@ -114,139 +87,87 @@
       </div>
     </section>
 
-    <!-- Materials -->
-    <section class="materials solid">
+    <!-- Backyard feature -->
+    <section class="backyard" id="backyard">
       <div class="container">
-        <h2 class="section-title">A house in three materials</h2>
-        <div class="material-list">
-          <article class="material">
-            <div class="swatch swatch-travertine" role="img" aria-label="Travertine — warm, striated pale stone"></div>
-            <h3>Roman travertine</h3>
-            <p>Quarried at Tivoli, laid in book-matched slabs. It holds the day's heat past midnight — the house is warm to the hand long after the sun is gone.</p>
-          </article>
-          <article class="material">
-            <div class="swatch swatch-oak" role="img" aria-label="Smoked oak — deep brown grain"></div>
-            <h3>Smoked oak</h3>
-            <p>Fumed, brushed, and finished with oil. Floors, joinery, and the long library wall are cut from the same twelve trees.</p>
-          </article>
-          <article class="material">
-            <div class="swatch swatch-bronze" role="img" aria-label="Patinated bronze — dark metal with warm highlights"></div>
-            <h3>Patinated bronze</h3>
-            <p>Every window frame, handle, and stair rail. Left unlacquered, it darkens a little each year the house is lived in.</p>
-          </article>
+        <div class="backyard-grid">
+          <div class="backyard-copy">
+            <h2 class="section-title">The backyard is the whole point</h2>
+            <p>
+              Most rentals end at the back door. This one starts there:
+              a paver patio that stays barefoot-warm, a pergola bar for
+              burgers off the grill, and a putting green for settling
+              family scores. When the string lights come on, nobody
+              asks what's on TV.
+            </p>
+            <p>
+              The 3D tour above saves it for last — walk out at
+              golden hour and see for yourself.
+            </p>
+            <a class="btn" href="#residence" data-goto-backyard>See it at dusk</a>
+          </div>
+          <ul class="amenity-list">
+            <li><span class="pin" aria-hidden="true">⛳</span>Private putting green <small>bring your putter, or don't — we have two</small></li>
+            <li><span class="pin" aria-hidden="true">⛳</span>Pergola bar with stools <small>lit for late rounds</small></li>
+            <li><span class="pin" aria-hidden="true">⛳</span>Gas grill <small>tools included</small></li>
+            <li><span class="pin" aria-hidden="true">⛳</span>Covered lounge patio <small>shade all afternoon</small></li>
+            <li><span class="pin" aria-hidden="true">⛳</span>Hanging egg chair <small>first come, first swung</small></li>
+            <li><span class="pin" aria-hidden="true">⛳</span>Fully fenced yard <small>kids and dogs approved</small></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Particulars -->
-    <section class="particulars" id="particulars">
+    <!-- Details -->
+    <section class="details solid" id="details">
       <div class="container">
-        <div class="particulars-grid">
-          <div class="particulars-intro">
-            <h2 class="section-title">Particulars</h2>
-            <p>The facts, plainly stated. Everything else, the walkthrough shows better than we could write it.</p>
+        <div class="details-grid">
+          <div class="details-intro">
+            <h2 class="section-title">The practical part</h2>
+            <p>
+              Everything a week actually needs — beds for six, two full
+              baths, laundry in the house, and easy parking.
+            </p>
           </div>
           <dl>
-            <div class="row"><dt>Residence</dt><dd>1,450 m²</dd></div>
-            <div class="row"><dt>Land</dt><dd>8.2 hectares</dd></div>
-            <div class="row"><dt>Bedrooms</dt><dd>6</dd></div>
-            <div class="row"><dt>Bathrooms</dt><dd>8</dd></div>
-            <div class="row"><dt>Pool</dt><dd>25 m, west-facing infinity edge</dd></div>
-            <div class="row"><dt>Cellar</dt><dd>4,000 bottles at 13 °C</dd></div>
-            <div class="row"><dt>Architect</dt><dd>Studio Ferro Levi</dd></div>
-            <div class="row"><dt>Completed</dt><dd>2024</dd></div>
-            <div class="row price"><dt>Price</dt><dd>On application</dd></div>
+            <div class="row"><dt>Primary bedroom</dt><dd>Queen, ceiling fan</dd></div>
+            <div class="row"><dt>Second bedroom</dt><dd>Queen in warm oak</dd></div>
+            <div class="row"><dt>Third bedroom</dt><dd>Bunk beds + TV</dd></div>
+            <div class="row"><dt>Spa bath</dt><dd>Marble walk-in shower, brass fixtures</dd></div>
+            <div class="row"><dt>Second bath</dt><dd>Glass shower, full vanity</dd></div>
+            <div class="row"><dt>Kitchen</dt><dd>Full galley, everything stocked</dd></div>
+            <div class="row"><dt>Laundry</dt><dd>Washer and dryer in the house</dd></div>
+            <div class="row"><dt>Parking</dt><dd>Two cars, back-to-back in the drive</dd></div>
           </dl>
         </div>
       </div>
     </section>
 
-    <!-- Location -->
-    <section class="location solid" id="location">
+    <!-- Gallery — appears automatically once photos/ has files -->
+    <section class="gallery" id="gallery" hidden>
       <div class="container">
-        <div class="location-grid">
-          <svg class="contour-map" viewBox="0 0 520 420" role="img" aria-label="Contour map of the Serra hills with Villa Vermiglia marked on the western ridge">
-            <g fill="none" stroke="currentColor" stroke-width="1">
-              <path class="contour" d="M60 390 C 20 330, 30 250, 90 210 C 150 170, 160 110, 230 90 C 300 70, 380 80, 430 130 C 480 180, 490 260, 450 320 C 410 380, 320 400, 240 395 C 170 391, 100 400, 60 390 Z"/>
-              <path class="contour" d="M100 370 C 65 320, 70 260, 120 225 C 170 190, 180 140, 240 122 C 300 105, 365 115, 408 155 C 450 195, 458 260, 425 308 C 392 356, 315 375, 248 371 C 190 368, 132 378, 100 370 Z"/>
-              <path class="contour" d="M140 348 C 112 310, 115 265, 155 238 C 195 211, 205 168, 255 153 C 305 139, 355 148, 390 180 C 424 212, 430 262, 403 300 C 376 338, 312 352, 258 349 C 212 347, 165 355, 140 348 Z"/>
-              <path class="contour" d="M180 325 C 160 297, 163 265, 192 245 C 221 225, 230 192, 268 181 C 306 170, 343 177, 369 201 C 394 225, 399 262, 379 290 C 359 318, 310 328, 269 326 C 235 325, 199 331, 180 325 Z"/>
-              <path class="contour" d="M220 302 C 207 284, 210 262, 229 249 C 248 236, 255 214, 280 207 C 305 200, 329 205, 346 220 C 362 235, 366 259, 353 277 C 340 295, 308 302, 281 301 C 258 300, 233 306, 220 302 Z"/>
-              <path class="contour" d="M255 280 C 248 270, 250 258, 260 251 C 271 243, 275 231, 289 227 C 303 223, 316 226, 325 234 C 334 243, 336 256, 329 266 C 322 276, 305 280, 290 279 C 278 279, 262 283, 255 280 Z"/>
-            </g>
-            <g class="estate-mark">
-              <circle cx="262" cy="254" r="4.5" fill="currentColor"/>
-              <circle class="mark-ring" cx="262" cy="254" r="11" fill="none" stroke="currentColor" stroke-width="1"/>
-              <line x1="273" y1="254" x2="330" y2="254" stroke="currentColor" stroke-width="1"/>
-            </g>
-            <text class="estate-label" x="338" y="258">VILLA VERMIGLIA</text>
-          </svg>
-          <div>
-            <h2 class="section-title">The Serra Hills</h2>
-            <p class="location-body">
-              A thousand metres above the coast road, on the last ridge before
-              the valley turns. The estate keeps its own olive terraces and a
-              kilometre of private track; the nearest village is a ten-minute
-              descent, and keeps a very good table.
-            </p>
-            <ul class="distance-list">
-              <li><span class="place">Milan Malpensa</span><span class="time">55 min</span></li>
-              <li><span class="place">The sea at Levanto</span><span class="time">40 min</span></li>
-              <li><span class="place">Private airfield</span><span class="time">25 min</span></li>
-              <li><span class="place">Village and market</span><span class="time">10 min</span></li>
-            </ul>
-          </div>
-        </div>
+        <h2 class="section-title">The real thing</h2>
+        <div class="gallery-grid" id="gallery-grid"></div>
       </div>
     </section>
 
-    <!-- Enquire -->
-    <section class="enquire" id="enquire">
+    <!-- Book -->
+    <section class="book solid">
       <div class="container">
-        <div class="enquire-grid">
-          <div class="enquire-copy">
-            <h2 class="section-title">A private viewing</h2>
-            <p>
-              The house is shown by appointment, in the late afternoon —
-              it insists on being seen at the hour it was designed for.
-              Tell us when suits you, and we will arrange the rest.
-            </p>
-          </div>
-          <form class="enquire-form" id="enquire-form" novalidate>
-            <div class="field" data-field="name">
-              <label for="f-name">Name</label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required>
-              <p class="field-error" aria-live="polite"></p>
-            </div>
-            <div class="field-row">
-              <div class="field" data-field="email">
-                <label for="f-email">Email</label>
-                <input id="f-email" name="email" type="email" autocomplete="email" required>
-                <p class="field-error" aria-live="polite"></p>
-              </div>
-              <div class="field" data-field="date">
-                <label for="f-date">Preferred date</label>
-                <input id="f-date" name="date" type="date">
-                <p class="field-error" aria-live="polite"></p>
-              </div>
-            </div>
-            <div class="field" data-field="message">
-              <label for="f-message">Message <span aria-hidden="true">— optional</span></label>
-              <textarea id="f-message" name="message" placeholder="Anything we should know before you visit"></textarea>
-              <p class="field-error" aria-live="polite"></p>
-            </div>
-            <button class="btn" type="submit" id="enquire-submit">Request viewing</button>
-            <p class="form-status" id="form-status" role="status"></p>
-          </form>
-        </div>
+        <h2 class="section-title">Your week in the sun starts here</h2>
+        <p>Dates fill fastest for school breaks and long weekends.</p>
+        <a class="btn" href="https://www.airbnb.com/rooms/1695135612631356099" target="_blank" rel="noopener">
+          Check dates on Airbnb
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <p class="aside">Booking and payment stay on Airbnb — this site is just the tour.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <span class="wordmark">Villa Vermiglia</span>
-    <span>Represented by Ferro &amp; Sole Private Estates, Milano</span>
-    <span class="colophon">A fictional estate, built end-to-end as a design study — the house exists only in the walkthrough above.</span>
+    <span class="wordmark"><span class="flag" aria-hidden="true">⛳</span>Fairway House</span>
+    <span>A private vacation rental · Booked through Airbnb</span>
   </footer>
 </body>
 </html>

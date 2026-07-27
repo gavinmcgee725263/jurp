@@ -10,43 +10,42 @@ web
 
 ## Users
 
-Ultra-high-net-worth buyers and their representatives (family offices, buyer's agents) browsing privately — most often evenings, on a laptop or large tablet, imagining themselves living in the house. A secondary audience is press and design-curious visitors whose sharing raises the estate's profile.
+Families and small groups planning a Florida trip — typically a parent browsing on a phone or laptop in the evening, comparing vacation rentals. They have seen a dozen near-identical white-and-gray listings today; the backyard is what makes them stop scrolling.
 
 ## Product Purpose
 
-A single-estate listing site for Villa Vermiglia, a modernist glass-and-travertine residence in the Serra hills. The site *is* the private showing: a cinematic 3D walkthrough of the house at dusk replaces the photography a listing would normally lean on. Success is a qualified viewing request — the visitor has toured the house, believes it is singular, and asks to see it in person.
+A direct microsite for Fairway House, a real three-bedroom vacation rental (listed on Airbnb). The site walks guests through the house in 3D before they book — every room the listing photos show, plus the backyard at the hour it's best: golden dusk, string lights on, putting green glowing. Success is a click through to the Airbnb listing with dates in mind.
 
 ## Positioning
 
-The only listing where you walk the house before you ever call — the tour is the proof.
+The only rental site where you've already walked the house — and stayed for the backyard — before you open Airbnb.
 
 ## Conversion & proof
 
-- Primary CTA: Request a private viewing (short form: name, contact, preferred date).
-- Secondary CTA: Walk through the residence (jump into the 3D tour).
-- The line a visitor remembers: "Above the valley, the last light stays longest."
-- Belief ladder: (1) this house is architecturally singular → (2) the setting — hills, dusk, silence — is the real luxury → (3) the walkthrough proves it is real and considered → (4) a private viewing is the natural next step.
-- Proof on hand: the interactive walkthrough itself, the architectural fact sheet, and the materials story. No testimonials — a single estate sells on the house, not on quotes.
+- Primary CTA: Book on Airbnb (the real listing URL).
+- Secondary CTA: Walk the house (jump into the 3D tour).
+- The line a visitor remembers: "A backyard built for play."
+- Belief ladder: (1) this is a clean, genuinely well-kept house → (2) it fits my family (beds, baths, laundry, parking) → (3) the backyard makes it a trip, not just a stay → (4) check the dates.
+- Proof on hand: the walkthrough itself and the listing photos (photos/ directory; gallery appears when files are added).
 
 ## Brand Personality
 
-Unhurried, precise, warm-at-dusk. The voice of a discreet estate agent who says little and shows everything. Copy is short, declarative, never salesy; the interface recedes so the house and the light carry the emotion. Evokes: stillness, longing, quiet confidence.
+Sunlit, easy, family-polished. The voice of a host who has thought of everything and doesn't make a fuss about it. Short warm sentences; no luxury-speak, no exclamation marks doing the selling. Evokes: ease, play, that first barefoot evening on the patio.
 
 ## Anti-references
 
-- Portal-style real-estate listings (Zillow/Rightmove grids, badge clutter, price-per-sqft tables).
-- Black-and-gold "luxury" templates with script fonts and champagne sparkle.
-- SaaS landing-page grammar: metric cards, eyebrow labels over every section, identical feature grids.
-- Generic archviz portfolio sites where the 3D is a bolted-on viewer widget rather than the narrative spine.
+- Airbnb-clone grids and badge clutter — this is one house, not a marketplace.
+- Luxury-villa affectation (serif gold-foil "elegance") — wrong register for a family rental.
+- SaaS landing grammar: metric cards, eyebrow labels, identical feature tiles.
+- Dark moody themes — this house's identity is white walls and Florida daylight.
 
 ## Design Principles
 
-- The house is the interface — every section either shows the house or gets out of its way.
-- Dusk is the brand — one hour of light, held; color and motion all live inside it.
-- Show, don't claim — no adjective the walkthrough can't back up.
-- Calm is the luxury — slow, exponential easing; nothing bounces, nothing shouts.
-- One page, one visit — the whole story in a single unhurried scroll.
+- Daylight is the brand — white ground, oak warmth, one turf-green accent; the dusk moment lands because everything else is bright.
+- The backyard is the headline — every section earns its place relative to it.
+- Show the real house — the 3D tour mirrors the actual rooms; the gallery shows the actual photos; nothing is invented.
+- Easy over impressive — booking friction, reading friction, and motion friction all stay low.
 
 ## Accessibility & Inclusion
 
-WCAG 2.1 AA contrast throughout (4.5:1 body text on the dark canvas). Full keyboard path through the walkthrough (arrow keys between rooms, focus management). Every 3D interaction has a text equivalent (room names, captions). `prefers-reduced-motion` swaps camera glides for instant cuts and disables smooth scroll, parallax, and idle drift. The tour is progressive enhancement: if WebGL is unavailable, the page still reads as a complete listing.
+WCAG 2.1 AA contrast on the white ground. Full keyboard path through the walkthrough; text equivalents for every room. `prefers-reduced-motion` replaces camera glides with cuts and stops fan spin, smooth scroll, and the dusk crossfade. The page is a complete listing without WebGL.

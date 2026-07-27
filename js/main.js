@@ -1,4 +1,4 @@
-/* Villa Vermiglia — page orchestration.
+/* Fairway House — page orchestration.
    gsap / ScrollTrigger / Lenis are vendored globals; the 3D scene is a module. */
 
 import { initScene } from "./scene.js";
@@ -11,12 +11,14 @@ const { gsap, ScrollTrigger } = window;
 /* ---------- rooms (order matches VIEWPOINTS in scene.js) ---------- */
 
 const ROOMS = [
-  { name: "Arrival", note: "The drive turns, the hills open, and the house appears against the last of the sun." },
-  { name: "The Great Room", note: "Six metres of glass to the valley. One room, one horizon." },
-  { name: "Kitchen & Dining", note: "A travertine island, twelve seats, and the evening pouring in from the west." },
-  { name: "The Primary Suite", note: "Wake to the ridge line. The glass runs the full width of the bed." },
-  { name: "The Study", note: "The quietest room in the house, one floor above the noise of nothing." },
-  { name: "Terrace & Pool", note: "Twenty-five metres of still water, ending where the hills begin." },
+  { name: "Curb side", note: "Fresh paint, palm out front, and parking for two cars back-to-back in the drive." },
+  { name: "Living room", note: "A big white sectional, a bigger screen, and morning light through the shutters." },
+  { name: "Kitchen", note: "Full white galley with brass pulls — stocked for real cooking, not just cereal." },
+  { name: "Primary bedroom", note: "Queen bed, soft linens, and a ceiling fan doing slow laps." },
+  { name: "The oak room", note: "Warm wood, a queen bed, and the quiet end of the hallway." },
+  { name: "The bunk room", note: "Twin over twin with its own TV — negotiations for the top bunk not included." },
+  { name: "The spa bath", note: "Marble walk-in shower with brass fixtures. Yes, in a rental." },
+  { name: "The backyard", note: "Golden hour: string lights on, bar open, putting green waiting for a rematch." },
 ];
 
 /* ---------- scene ---------- */
@@ -63,7 +65,7 @@ function goToRoom(i, { instant = false } = {}) {
     gsap.timeline({ overwrite: "auto" })
       .to(caption, { opacity: 0, y: -8, duration: 0.28, ease: "power2.in" })
       .add(() => setCaption(current))
-      .to(caption, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", delay: 0.55 });
+      .to(caption, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", delay: 0.5 });
   } else {
     setCaption(current);
   }
@@ -116,13 +118,20 @@ if (!reducedMotion && typeof window.Lenis !== "undefined" && gsapOk) {
   gsap.ticker.lagSmoothing(0);
 }
 
+function scrollToEl(target) {
+  if (lenis) lenis.scrollTo(target, { duration: 1.3, easing: (t) => 1 - Math.pow(1 - t, 4) });
+  else target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+}
+
 for (const link of document.querySelectorAll('a[href^="#"]')) {
   link.addEventListener("click", (e) => {
     const target = document.querySelector(link.getAttribute("href"));
     if (!target) return;
     e.preventDefault();
-    if (lenis) lenis.scrollTo(target, { duration: 1.4, easing: (t) => 1 - Math.pow(1 - t, 4) });
-    else target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+    scrollToEl(target);
+    if (link.hasAttribute("data-goto-backyard")) {
+      window.setTimeout(() => goToRoom(ROOMS.length - 1), lenis ? 900 : 300);
+    }
   });
 }
 
@@ -136,15 +145,12 @@ onScroll();
 /* ---------- entrance + scroll choreography ---------- */
 
 if (gsapOk && !reducedMotion) {
-  // one rehearsed entrance: dusk fades up, the name rises, the details follow
   gsap.timeline({ defaults: { ease: "power4.out" } })
-    .from(".scene-layer", { opacity: 0, duration: 1.8, ease: "power2.inOut" }, 0)
-    .from(".hero-title .line > span", { yPercent: 115, duration: 1.15, stagger: 0.14 }, 0.45)
-    .from([".hero-tag", ".hero-meta"], { opacity: 0, y: 24, duration: 0.9, stagger: 0.12 }, 1.0)
-    .from(".site-nav", { opacity: 0, y: -16, duration: 0.8 }, 1.2)
-    .from(".hero-scrollcue", { opacity: 0, duration: 0.8 }, 1.5);
+    .from(".scene-layer", { opacity: 0, duration: 1.4, ease: "power2.inOut" }, 0)
+    .from(".hero-card", { opacity: 0, y: 42, duration: 1.0 }, 0.5)
+    .from([".hero-title", ".hero-sub", ".hero-meta", ".hero-actions"], { opacity: 0, y: 22, duration: 0.75, stagger: 0.09 }, 0.7)
+    .from(".site-nav", { opacity: 0, y: -14, duration: 0.7 }, 0.9);
 
-  // hero dolly: the camera eases toward the house as you leave the vista
   if (scene.ok) {
     ScrollTrigger.create({
       trigger: ".hero",
@@ -155,70 +161,42 @@ if (gsapOk && !reducedMotion) {
     });
   }
 
-  // walkthrough activation
   ScrollTrigger.create({
     trigger: tourSection,
     start: "top 55%",
     end: "bottom 45%",
-    onEnter: () => { tourEntered = true; goToRoom(current, {}); scene.ok && scene.goTo(current); },
+    onEnter: () => { tourEntered = true; scene.ok && scene.goTo(current); },
     onEnterBack: () => { scene.ok && scene.goTo(current); },
     onLeaveBack: () => { scene.ok && scene.goVista(); },
   });
 
-  // section reveals — each shaped to what it reveals, played once
   const rise = (targets, trigger, vars = {}) =>
     gsap.from(targets, {
-      y: 36,
+      y: 32,
       opacity: 0,
-      duration: 0.9,
+      duration: 0.85,
       ease: "power3.out",
       stagger: 0.08,
       scrollTrigger: { trigger, start: "top 78%" },
       ...vars,
     });
 
-  rise([".estate .section-title", ".estate-lede", ".estate-body", ".fact-strip"], ".estate");
-  rise(".material", ".material-list", { y: 28, stagger: 0.12 });
-  rise(".particulars .row", ".particulars dl", { y: 18, duration: 0.6, stagger: 0.05 });
-  rise([".location .section-title", ".location-body", ".distance-list li"], ".location-grid > div");
-  rise([".enquire-copy", ".enquire-form"], ".enquire", { stagger: 0.15 });
-
-  // the hills draw themselves
-  const contours = document.querySelectorAll(".contour-map .contour");
-  contours.forEach((path, i) => {
-    const len = path.getTotalLength();
-    gsap.fromTo(path,
-      { strokeDasharray: len, strokeDashoffset: len },
-      {
-        strokeDashoffset: 0,
-        duration: 1.6,
-        ease: "power2.inOut",
-        delay: i * 0.12,
-        scrollTrigger: { trigger: ".contour-map", start: "top 75%" },
-      });
-  });
-  gsap.from(".contour-map .estate-mark, .contour-map .estate-label", {
-    opacity: 0,
-    duration: 0.8,
-    delay: 1.1,
-    scrollTrigger: { trigger: ".contour-map", start: "top 75%" },
-  });
-} else {
-  // reduced motion or no gsap: everything is already visible; jump cuts only
-  if (scene.ok) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.target === tourSection && entry.isIntersecting) {
-            tourEntered = true;
-            scene.goTo(current, { instant: true });
-          }
+  rise([".backyard-copy", ".amenity-list li"], ".backyard", { stagger: 0.06 });
+  rise([".details-intro", ".details .row"], ".details", { y: 20, duration: 0.6, stagger: 0.05 });
+  rise([".book .section-title", ".book p", ".book .btn"], ".book");
+} else if (scene.ok) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.target === tourSection && entry.isIntersecting) {
+          tourEntered = true;
+          scene.goTo(current, { instant: true });
         }
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(tourSection);
-  }
+      }
+    },
+    { threshold: 0.4 }
+  );
+  io.observe(tourSection);
 }
 
 /* pause rendering while solid sections fully cover the canvas */
@@ -235,50 +213,33 @@ if (scene.ok) {
   io.observe(tourSection);
 }
 
-/* ---------- enquiry form ---------- */
+/* ---------- gallery — lights up when photos/ has files ---------- */
 
-const form = document.getElementById("enquire-form");
-const statusEl = document.getElementById("form-status");
-const submitBtn = document.getElementById("enquire-submit");
+const GALLERY_MANIFEST = [
+  ["01-living-room.jpg", "Living room with the big screen and white sectional"],
+  ["02-kitchen.jpg", "White galley kitchen with brass hardware"],
+  ["03-primary-bedroom.jpg", "Primary bedroom, queen bed and ceiling fan"],
+  ["04-oak-bedroom.jpg", "Second bedroom in warm oak"],
+  ["05-bunk-room.jpg", "Bunk room, twin over twin"],
+  ["06-spa-shower.jpg", "Marble walk-in shower with brass fixtures"],
+  ["07-second-bath.jpg", "Second bathroom with glass shower"],
+  ["08-backyard-dusk.jpg", "The backyard at dusk — pergola bar and putting green"],
+  ["09-exterior.jpg", "The front of the house and driveway"],
+  ["10-laundry.jpg", "In-house washer and dryer"],
+];
 
-const validators = {
-  name: (v) => (v.trim().length >= 2 ? "" : "Please tell us your name."),
-  email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? "" : "That email doesn't look right."),
-};
-
-function validateField(fieldEl) {
-  const input = fieldEl.querySelector("input, textarea");
-  const check = validators[fieldEl.dataset.field];
-  const message = check ? check(input.value) : "";
-  fieldEl.classList.toggle("is-invalid", Boolean(message));
-  fieldEl.querySelector(".field-error").textContent = message;
-  return !message;
-}
-
-for (const fieldEl of form.querySelectorAll(".field")) {
-  const input = fieldEl.querySelector("input, textarea");
-  input.addEventListener("blur", () => validateField(fieldEl));
-  input.addEventListener("input", () => {
-    if (fieldEl.classList.contains("is-invalid")) validateField(fieldEl);
-  });
-}
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const fields = [...form.querySelectorAll(".field")];
-  const ok = fields.map(validateField).every(Boolean);
-  if (!ok) {
-    statusEl.textContent = "";
-    form.querySelector(".is-invalid input, .is-invalid textarea")?.focus();
-    return;
+{
+  const section = document.getElementById("gallery");
+  const grid = document.getElementById("gallery-grid");
+  let shown = 0;
+  for (const [file, alt] of GALLERY_MANIFEST) {
+    const img = new Image();
+    img.loading = "lazy";
+    img.alt = alt;
+    img.src = `photos/${file}`;
+    img.addEventListener("load", () => {
+      grid.appendChild(img);
+      if (++shown === 1) section.hidden = false;
+    });
   }
-  submitBtn.disabled = true;
-  statusEl.classList.remove("is-success");
-  statusEl.textContent = "Sending your request…";
-  window.setTimeout(() => {
-    submitBtn.disabled = false;
-    statusEl.classList.add("is-success");
-    statusEl.textContent = "Thank you — we will be in touch within the day to arrange your viewing.";
-    form.reset();
-  }, 900);
-});
+}

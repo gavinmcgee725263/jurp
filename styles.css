@@ -1,68 +1,53 @@
 /* ============================================================
-   Villa Vermiglia — design system
-   Dusk cinematic. Deep ink canvas, vermillion accent,
-   Italiana display / Hanken Grotesk text.
+   Fairway House — design system
+   Florida daylight. White ground, oak warmth, turf-green accent.
+   Bricolage Grotesque throughout, weight does the talking.
    ============================================================ */
 
-/* ---------- Fonts (vendored, see fonts/*.LICENSE) ---------- */
+/* ---------- Font (vendored, see fonts/bricolage-grotesque.LICENSE) ---------- */
 
 @font-face {
-  font-family: "Italiana";
+  font-family: "Bricolage Grotesque";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 200 800;
   font-display: swap;
-  src: url("fonts/italiana-latin-400-normal.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Hanken Grotesk";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2-variations");
+  src: url("fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2-variations");
 }
 
 /* ---------- Tokens ---------- */
 
 :root {
-  /* Color — committed strategy: vermillion carries the brand,
-     the ink canvas stays out of the dusk's way. */
-  --ink: oklch(0.16 0.02 285);            /* page canvas — deep dusk indigo */
-  --ink-raise: oklch(0.2 0.024 288);      /* raised surfaces */
-  --ink-well: oklch(0.13 0.018 283);      /* recessed / footer */
-  --text: oklch(0.93 0.012 75);           /* warm white */
-  --text-soft: oklch(0.76 0.018 78);      /* secondary */
-  --vermillion: oklch(0.62 0.19 25);      /* the last light */
-  --vermillion-bright: oklch(0.7 0.185 28);
-  --vermillion-deep: oklch(0.44 0.14 24);
-  --hairline: oklch(0.93 0.012 75 / 0.14);
-  --hairline-soft: oklch(0.93 0.012 75 / 0.07);
+  --paper: oklch(1 0 0);                    /* pure white — the house's own walls */
+  --paper-oak: oklch(0.955 0.012 85);       /* pale oak band, from the floors */
+  --ink: oklch(0.28 0.02 250);
+  --ink-soft: oklch(0.46 0.018 250);
+  --turf: oklch(0.55 0.13 150);             /* the putting green */
+  --turf-deep: oklch(0.42 0.1 152);
+  --turf-wash: oklch(0.55 0.13 150 / 0.1);
+  --brass: oklch(0.68 0.09 85);             /* shower + cabinet hardware */
+  --line: oklch(0.28 0.02 250 / 0.14);
+  --line-soft: oklch(0.28 0.02 250 / 0.07);
 
-  /* Type — fluid modular scale, ~1.3 ratio */
-  --font-display: "Italiana", "Didot", "Bodoni MT", Georgia, serif;
-  --font-text: "Hanken Grotesk", system-ui, "Segoe UI", sans-serif;
+  --font-sans: "Bricolage Grotesque", system-ui, "Segoe UI", sans-serif;
   --step--1: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
   --step-0: clamp(1rem, 0.97rem + 0.2vw, 1.0625rem);
   --step-1: clamp(1.3rem, 1.2rem + 0.5vw, 1.55rem);
-  --step-2: clamp(1.7rem, 1.5rem + 1vw, 2.25rem);
-  --step-3: clamp(2.2rem, 1.8rem + 2vw, 3.4rem);
-  --step-4: clamp(3rem, 2rem + 5vw, 5.75rem);
+  --step-2: clamp(1.7rem, 1.5rem + 1vw, 2.2rem);
+  --step-3: clamp(2.1rem, 1.7rem + 2vw, 3.2rem);
+  --step-4: clamp(2.7rem, 1.9rem + 4.5vw, 5.1rem);
 
-  /* Space */
   --space-gutter: clamp(1.25rem, 4vw, 4rem);
-  --space-section: clamp(6rem, 14vh, 11rem);
+  --space-section: clamp(5.5rem, 13vh, 10rem);
 
-  /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-  /* z scale */
   --z-canvas: 0;
   --z-page: 1;
   --z-tour-ui: 2;
   --z-nav: 3;
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* ---------- Base ---------- */
@@ -79,11 +64,11 @@ html {
 
 body {
   margin: 0;
-  background: var(--ink);
-  color: var(--text);
-  font-family: var(--font-text);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
   font-size: var(--step-0);
-  font-weight: 380;
+  font-weight: 400;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
@@ -92,9 +77,9 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.08;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
   margin: 0;
   text-wrap: balance;
 }
@@ -127,14 +112,14 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--vermillion-bright);
+  outline: 2px solid var(--turf-deep);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 ::selection {
-  background: var(--vermillion-deep);
-  color: var(--text);
+  background: var(--turf);
+  color: white;
 }
 
 .visually-hidden {
@@ -153,8 +138,8 @@ button {
   top: 0.75rem;
   left: 0.75rem;
   z-index: var(--z-nav);
-  background: var(--ink-well);
-  border: 1px solid var(--hairline);
+  background: var(--paper);
+  border: 1px solid var(--line);
   padding: 0.6em 1em;
   transform: translateY(-200%);
   transition: transform 0.25s var(--ease-out);
@@ -177,16 +162,16 @@ button {
   height: 100%;
 }
 
-/* Static dusk fallback when WebGL is unavailable */
+/* Static daylight fallback when WebGL is unavailable */
 .no-webgl .scene-layer {
   background:
-    radial-gradient(120% 60% at 50% 100%, oklch(0.45 0.15 35 / 0.5), transparent 60%),
     linear-gradient(
       to bottom,
-      oklch(0.13 0.02 283) 0%,
-      oklch(0.2 0.05 300) 45%,
-      oklch(0.38 0.13 32) 78%,
-      oklch(0.22 0.05 300) 100%
+      oklch(0.78 0.07 240) 0%,
+      oklch(0.9 0.035 230) 55%,
+      oklch(0.96 0.015 210) 72%,
+      oklch(0.72 0.09 150) 73%,
+      oklch(0.78 0.08 148) 100%
     );
 }
 
@@ -202,21 +187,29 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem var(--space-gutter);
-  transition: background-color 0.4s var(--ease-out), backdrop-filter 0.4s var(--ease-out);
+  padding: 1rem var(--space-gutter);
+  background: oklch(1 0 0 / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: box-shadow 0.4s var(--ease-out);
 }
 
 .site-nav.is-scrolled {
-  background: oklch(0.16 0.02 285 / 0.72);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 var(--line-soft), 0 8px 24px -18px oklch(0.28 0.02 250 / 0.4);
 }
 
 .wordmark {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  letter-spacing: 0.04em;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.wordmark .flag {
+  color: var(--turf);
 }
 
 .nav-links {
@@ -227,14 +220,13 @@ button {
   margin: 0;
   padding: 0;
   font-size: var(--step--1);
-  font-weight: 470;
-  letter-spacing: 0.015em;
+  font-weight: 500;
 }
 
 .nav-links a {
   position: relative;
   padding-block: 0.35em;
-  color: var(--text-soft);
+  color: var(--ink-soft);
   transition: color 0.25s var(--ease-out);
   white-space: nowrap;
 }
@@ -245,8 +237,9 @@ button {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 1px;
-  background: var(--vermillion-bright);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--turf);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.35s var(--ease-out);
@@ -254,7 +247,7 @@ button {
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  color: var(--text);
+  color: var(--ink);
 }
 
 .nav-links a:hover::after,
@@ -266,19 +259,18 @@ button {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.6em;
-  padding: 0.72em 1.5em;
-  background: var(--vermillion);
-  color: var(--ink-well);
+  gap: 0.55em;
+  padding: 0.7em 1.4em;
+  background: var(--turf-deep);
+  color: white;
   font-weight: 600;
   font-size: var(--step--1);
-  letter-spacing: 0.02em;
   border-radius: 999px;
   transition: background-color 0.25s var(--ease-out), transform 0.25s var(--ease-out);
 }
 
 .btn:hover {
-  background: var(--vermillion-bright);
+  background: var(--turf);
   transform: translateY(-1px);
 }
 
@@ -286,15 +278,9 @@ button {
   transform: translateY(0) scale(0.98);
 }
 
-.btn-ghost {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--hairline);
-}
-
-.btn-ghost:hover {
-  background: oklch(0.93 0.012 75 / 0.07);
-  border-color: oklch(0.93 0.012 75 / 0.3);
+.btn svg {
+  width: 1em;
+  height: 1em;
 }
 
 main {
@@ -302,16 +288,19 @@ main {
   z-index: var(--z-page);
 }
 
-/* Sections that sit on solid ink and cover the scene */
 .solid {
-  background: var(--ink);
+  background: var(--paper);
   position: relative;
 }
 
 .container {
   padding-inline: var(--space-gutter);
-  max-width: 78rem;
+  max-width: 74rem;
   margin-inline: auto;
+}
+
+.section-title {
+  font-size: var(--step-3);
 }
 
 /* ---------- Hero ---------- */
@@ -322,134 +311,70 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 var(--space-gutter) clamp(3rem, 9vh, 6rem);
+  padding: 0 var(--space-gutter) clamp(2.5rem, 8vh, 5rem);
+}
+
+.hero-card {
+  background: oklch(1 0 0 / 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line-soft);
+  border-radius: 1.4rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  max-width: 34rem;
+  box-shadow: 0 24px 60px -30px oklch(0.28 0.02 250 / 0.35);
 }
 
 .hero-title {
   font-size: var(--step-4);
-  letter-spacing: 0.02em;
-  max-width: 12ch;
+  font-weight: 800;
+  letter-spacing: -0.025em;
 }
 
-.hero-title .line {
-  display: block;
-  overflow: clip;
+.hero-title em {
+  font-style: normal;
+  color: var(--turf);
 }
 
-.hero-title .line > span {
-  display: inline-block;
-}
-
-.hero-tag {
-  margin-top: 1.4rem;
+.hero-sub {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
   font-size: var(--step-1);
-  font-family: var(--font-display);
-  color: var(--text);
-  letter-spacing: 0.01em;
+  font-weight: 380;
+  line-height: 1.45;
 }
 
 .hero-meta {
-  margin-top: 1.1rem;
+  margin-top: 1.2rem;
   display: flex;
   flex-wrap: wrap;
-  column-gap: 1.4rem;
-  row-gap: 0.2rem;
-  color: var(--text-soft);
+  gap: 0.5rem 1.3rem;
   font-size: var(--step--1);
-  font-weight: 470;
-  letter-spacing: 0.04em;
+  font-weight: 550;
+  color: var(--ink-soft);
 }
 
 .hero-meta .dot {
-  color: var(--vermillion-bright);
+  color: var(--turf);
 }
 
-.hero-scrollcue {
-  position: absolute;
-  right: var(--space-gutter);
-  bottom: clamp(3rem, 9vh, 6rem);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: var(--text-soft);
-  font-size: var(--step--1);
-  letter-spacing: 0.08em;
-}
-
-.hero-scrollcue .rule {
-  width: 3.5rem;
-  height: 1px;
-  background: var(--hairline);
-  overflow: clip;
-  position: relative;
-}
-
-.hero-scrollcue .rule::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--vermillion-bright);
-  transform: translateX(-100%);
-  animation: cue-sweep 2.6s var(--ease-in-out) infinite;
-}
-
-@keyframes cue-sweep {
-  0% { transform: translateX(-100%); }
-  55% { transform: translateX(0); }
-  100% { transform: translateX(100%); }
-}
-
-/* ---------- Estate narrative ---------- */
-
-.estate {
-  padding-block: var(--space-section);
-}
-
-.estate-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: clamp(2rem, 6vw, 6rem);
-  align-items: start;
-}
-
-.section-title {
-  font-size: var(--step-3);
-  letter-spacing: 0.015em;
-}
-
-.estate-lede {
-  font-size: var(--step-1);
-  line-height: 1.5;
-  font-weight: 330;
-  max-width: 44ch;
-}
-
-.estate-lede em {
-  font-style: normal;
-  color: var(--vermillion-bright);
-}
-
-.estate-body {
-  margin-top: 1.6rem;
-  color: var(--text-soft);
-  max-width: 58ch;
-}
-
-.fact-strip {
-  margin-top: clamp(3rem, 8vh, 5rem);
-  padding-top: 1.4rem;
-  border-top: 1px solid var(--hairline);
+.hero-actions {
+  margin-top: 1.4rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 3rem;
-  font-size: var(--step--1);
-  letter-spacing: 0.05em;
-  color: var(--text-soft);
+  gap: 0.7rem;
 }
 
-.fact-strip strong {
-  color: var(--text);
-  font-weight: 560;
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.btn-ghost:hover {
+  background: var(--turf-wash);
+  border-color: var(--turf);
+  color: var(--turf-deep);
 }
 
 /* ---------- Walkthrough ---------- */
@@ -472,7 +397,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(4.5rem, 10vh, 6rem) var(--space-gutter) clamp(1.5rem, 4vh, 2.5rem);
+  padding: clamp(4.5rem, 10vh, 6rem) var(--space-gutter) clamp(1.25rem, 3.5vh, 2.25rem);
   pointer-events: none;
 }
 
@@ -487,24 +412,21 @@ main {
   gap: 1rem;
 }
 
-.tour-head h2,
-.tour-hint,
-.tour-caption,
-.room-rail button {
-  text-shadow:
-    0 1px 14px oklch(0.13 0.018 283 / 0.8),
-    0 1px 3px oklch(0.13 0.018 283 / 0.55);
-}
-
 .tour-head h2 {
   font-size: var(--step-2);
 }
 
 .tour-hint {
   font-size: var(--step--1);
-  color: var(--text-soft);
-  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  font-weight: 500;
   text-align: right;
+}
+
+/* legibility over the 3D scene, light or dusk */
+.tour-head h2,
+.tour-hint {
+  text-shadow: 0 0 14px oklch(1 0 0 / 0.65);
 }
 
 .tour-foot {
@@ -517,43 +439,49 @@ main {
 .room-rail {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.05rem;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.6rem 0.9rem;
+  background: oklch(1 0 0 / 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line-soft);
+  border-radius: 1rem;
 }
 
 .room-rail button {
   display: flex;
   align-items: baseline;
-  gap: 0.9rem;
-  padding: 0.42em 0.6em 0.42em 0;
+  gap: 0.7rem;
+  padding: 0.34em 0.4em 0.34em 0;
   font-size: var(--step--1);
-  font-weight: 470;
-  letter-spacing: 0.03em;
-  color: var(--text-soft);
+  font-weight: 500;
+  color: var(--ink-soft);
   transition: color 0.25s var(--ease-out);
 }
 
 .room-rail .idx {
-  font-family: var(--font-display);
-  font-size: 1.05em;
-  color: var(--text-soft);
-  opacity: 0.7;
-  width: 1.3em;
+  font-weight: 700;
+  font-size: 0.8em;
+  color: var(--ink-soft);
+  opacity: 0.55;
+  width: 1.4em;
+  font-variant-numeric: tabular-nums;
   transition: color 0.25s var(--ease-out), opacity 0.25s var(--ease-out);
 }
 
 .room-rail button:hover {
-  color: var(--text);
+  color: var(--ink);
 }
 
 .room-rail button[aria-current="true"] {
-  color: var(--text);
+  color: var(--ink);
+  font-weight: 650;
 }
 
 .room-rail button[aria-current="true"] .idx {
-  color: var(--vermillion-bright);
+  color: var(--turf);
   opacity: 1;
 }
 
@@ -561,20 +489,25 @@ main {
   max-width: 26rem;
   text-align: right;
   margin-left: auto;
+  background: oklch(1 0 0 / 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line-soft);
+  border-radius: 1rem;
+  padding: 1rem 1.2rem;
 }
 
 .tour-caption .room-name {
-  font-family: var(--font-display);
   font-size: var(--step-2);
+  font-weight: 750;
+  letter-spacing: -0.02em;
   line-height: 1.05;
-  letter-spacing: 0.02em;
 }
 
 .tour-caption .room-note {
-  margin-top: 0.5rem;
-  color: var(--text-soft);
+  margin-top: 0.4rem;
+  color: var(--ink-soft);
   font-size: var(--step--1);
-  letter-spacing: 0.02em;
   margin-left: auto;
   max-width: 34ch;
 }
@@ -582,320 +515,189 @@ main {
 .tour-controls {
   display: flex;
   gap: 0.5rem;
-  margin-top: 1.1rem;
+  margin-top: 0.9rem;
   justify-content: flex-end;
 }
 
 .tour-controls button {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.6rem;
+  height: 2.6rem;
   border-radius: 999px;
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--line);
+  background: var(--paper);
   display: grid;
   place-items: center;
-  color: var(--text);
-  transition: border-color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+  color: var(--ink);
+  transition: border-color 0.25s var(--ease-out), background-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
 }
 
 .tour-controls button:hover {
-  border-color: var(--vermillion-bright);
-  background: oklch(0.62 0.19 25 / 0.12);
+  border-color: var(--turf);
+  background: var(--turf-wash);
+  color: var(--turf-deep);
 }
 
 .tour-controls svg {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
-/* Fallback when WebGL is unavailable */
 .no-webgl .tour-hint {
   visibility: hidden;
 }
 
-/* ---------- Materials ---------- */
+/* ---------- Backyard feature ---------- */
 
-.materials {
+.backyard {
+  padding-block: var(--space-section);
+  background: var(--paper-oak);
+}
+
+.backyard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(2rem, 6vw, 5.5rem);
+  align-items: start;
+}
+
+.backyard-copy p {
+  margin-top: 1.3rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+.backyard-copy .btn {
+  margin-top: 1.6rem;
+}
+
+.amenity-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.amenity-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--line-soft);
+  font-weight: 500;
+}
+
+.amenity-list li:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.amenity-list .pin {
+  color: var(--turf);
+  font-weight: 800;
+  flex: none;
+}
+
+.amenity-list small {
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-size: var(--step--1);
+  margin-left: auto;
+  text-align: right;
+}
+
+/* ---------- Details ---------- */
+
+.details {
   padding-block: var(--space-section);
 }
 
-.materials .section-title {
-  max-width: 14ch;
-}
-
-.material-list {
-  margin-top: clamp(2.5rem, 7vh, 4.5rem);
-  display: grid;
-  gap: 0;
-}
-
-.material {
-  display: grid;
-  grid-template-columns: minmax(4rem, 8rem) minmax(0, 1fr) minmax(0, 2fr);
-  gap: clamp(1.25rem, 4vw, 3.5rem);
-  align-items: center;
-  padding-block: 2rem;
-  border-top: 1px solid var(--hairline-soft);
-}
-
-.material:last-child {
-  border-bottom: 1px solid var(--hairline-soft);
-}
-
-.swatch {
-  aspect-ratio: 1;
-  border-radius: 999px;
-  border: 1px solid var(--hairline);
-}
-
-.swatch-travertine {
-  background:
-    repeating-linear-gradient(93deg, transparent 0 9px, oklch(0.72 0.02 70 / 0.25) 9px 10px),
-    linear-gradient(160deg, oklch(0.88 0.02 78), oklch(0.78 0.03 70));
-}
-
-.swatch-oak {
-  background:
-    repeating-linear-gradient(88deg, transparent 0 5px, oklch(0.2 0.02 55 / 0.35) 5px 6px),
-    linear-gradient(145deg, oklch(0.42 0.045 55), oklch(0.3 0.04 45));
-}
-
-.swatch-bronze {
-  background:
-    radial-gradient(140% 110% at 30% 25%, oklch(0.55 0.07 60 / 0.65), transparent 55%),
-    linear-gradient(160deg, oklch(0.38 0.05 55), oklch(0.24 0.035 40));
-}
-
-.material h3 {
-  font-size: var(--step-1);
-  letter-spacing: 0.02em;
-}
-
-.material p {
-  color: var(--text-soft);
-  max-width: 52ch;
-}
-
-/* ---------- Particulars ---------- */
-
-.particulars {
-  padding-block: var(--space-section);
-  background: var(--ink-well);
-}
-
-.particulars-grid {
+.details-grid {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: clamp(2rem, 6vw, 6rem);
+  gap: clamp(2rem, 6vw, 5.5rem);
 }
 
-.particulars-intro p {
-  margin-top: 1.4rem;
-  color: var(--text-soft);
-  max-width: 40ch;
+.details-intro p {
+  margin-top: 1.3rem;
+  color: var(--ink-soft);
+  max-width: 38ch;
 }
 
-.particulars dl {
+.details dl {
   margin: 0;
 }
 
-.particulars .row {
+.details .row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 2rem;
-  padding-block: 0.95rem;
-  border-bottom: 1px solid var(--hairline-soft);
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--line-soft);
 }
 
-.particulars .row:first-child {
-  border-top: 1px solid var(--hairline);
+.details .row:first-child {
+  border-top: 1px solid var(--line);
 }
 
-.particulars dt {
-  color: var(--text-soft);
-  font-size: var(--step--1);
-  letter-spacing: 0.04em;
-}
-
-.particulars dd {
-  margin: 0;
-  font-weight: 540;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-.particulars .price dd {
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  color: var(--vermillion-bright);
-}
-
-/* ---------- Location ---------- */
-
-.location {
-  padding-block: var(--space-section);
-  position: relative;
-  overflow: clip;
-}
-
-.location-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: center;
-}
-
-.contour-map {
-  width: 100%;
-  height: auto;
-  color: oklch(0.93 0.012 75 / 0.24);
-}
-
-.contour-map .estate-mark {
-  color: var(--vermillion-bright);
-}
-
-.contour-map .estate-label {
-  fill: var(--text);
-  font-family: var(--font-text);
-  font-size: 10.5px;
-  font-weight: 560;
-  letter-spacing: 0.08em;
-}
-
-.location-body {
-  color: var(--text-soft);
-  margin-top: 1.4rem;
-}
-
-.distance-list {
-  list-style: none;
-  margin: 2.4rem 0 0;
-  padding: 0;
-  max-width: 26rem;
-}
-
-.distance-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  padding-block: 0.7rem;
-  border-bottom: 1px solid var(--hairline-soft);
-  font-size: var(--step--1);
-  letter-spacing: 0.03em;
-}
-
-.distance-list .place {
-  color: var(--text-soft);
-}
-
-.distance-list .time {
-  font-weight: 560;
-  font-variant-numeric: tabular-nums;
-}
-
-/* ---------- Enquire ---------- */
-
-.enquire {
-  padding-block: var(--space-section);
-  background: var(--ink-well);
-}
-
-.enquire-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
-  gap: clamp(2.5rem, 6vw, 6rem);
-}
-
-.enquire-copy p {
-  margin-top: 1.4rem;
-  color: var(--text-soft);
-  max-width: 44ch;
-}
-
-.enquire-form {
-  display: grid;
-  gap: 1.4rem;
-  align-content: start;
-}
-
-.field {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.field label {
+.details dt {
+  color: var(--ink-soft);
   font-size: var(--step--1);
   font-weight: 500;
-  letter-spacing: 0.03em;
-  color: var(--text-soft);
 }
 
-.field input,
-.field textarea {
-  font: inherit;
-  color: var(--text);
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--hairline);
-  padding: 0.55em 0.1em;
-  border-radius: 0;
-  transition: border-color 0.3s var(--ease-out);
+.details dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
 }
 
-.field input:focus-visible,
-.field textarea:focus-visible {
-  outline: none;
-  border-bottom-color: var(--vermillion-bright);
+/* ---------- Gallery (appears when photos/ has files) ---------- */
+
+.gallery {
+  padding-block: var(--space-section);
+  background: var(--paper-oak);
 }
 
-.field input::placeholder,
-.field textarea::placeholder {
-  color: oklch(0.66 0.015 78);
-}
-
-.field textarea {
-  resize: vertical;
-  min-height: 5.5rem;
-}
-
-.field.is-invalid input {
-  border-bottom-color: oklch(0.6 0.19 25);
-}
-
-.field .field-error {
-  font-size: var(--step--1);
-  color: var(--vermillion-bright);
-  min-height: 1.2em;
-}
-
-.field-row {
+.gallery-grid {
+  margin-top: clamp(2rem, 6vh, 3.5rem);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
 }
 
-.enquire-form .btn {
-  justify-self: start;
-  margin-top: 0.4rem;
-  min-width: 13.5rem;
-  justify-content: center;
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0.9rem;
 }
 
-.enquire-form .btn[disabled] {
-  opacity: 0.6;
-  cursor: default;
-  transform: none;
+/* ---------- Book band ---------- */
+
+.book {
+  padding-block: var(--space-section);
+  text-align: center;
 }
 
-.form-status {
-  min-height: 1.5em;
+.book .section-title {
+  max-width: 18ch;
+  margin-inline: auto;
+}
+
+.book p {
+  margin: 1.2rem auto 0;
+  color: var(--ink-soft);
+}
+
+.book .btn {
+  margin-top: 1.8rem;
+  font-size: var(--step-0);
+  padding: 0.85em 1.9em;
+}
+
+.book .aside {
+  margin-top: 0.9rem;
   font-size: var(--step--1);
-  color: var(--text-soft);
-}
-
-.form-status.is-success {
-  color: oklch(0.8 0.1 150);
+  color: var(--ink-soft);
 }
 
 /* ---------- Footer ---------- */
@@ -903,30 +705,24 @@ main {
 .site-footer {
   position: relative;
   z-index: var(--z-page);
-  background: var(--ink-well);
-  border-top: 1px solid var(--hairline-soft);
-  padding: 2.6rem var(--space-gutter) 2.8rem;
+  background: var(--paper);
+  border-top: 1px solid var(--line-soft);
+  padding: 2.4rem var(--space-gutter) 2.6rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 3rem;
   align-items: baseline;
   justify-content: space-between;
-  color: var(--text-soft);
+  color: var(--ink-soft);
   font-size: var(--step--1);
-  letter-spacing: 0.02em;
 }
 
 .site-footer .wordmark {
-  color: var(--text);
+  color: var(--ink);
+  font-size: 1.05rem;
 }
 
-.site-footer .colophon {
-  max-width: 44ch;
-}
-
-/* ---------- Reveal defaults ----------
-   Content is visible by default; JS opts elements in
-   right before animating them, so nothing ships hidden. */
+/* ---------- Reveal ---------- */
 
 .gs-reveal {
   will-change: transform, opacity;
@@ -936,11 +732,11 @@ main {
 
 @media (max-width: 40rem) {
   .site-nav {
-    padding: 0.85rem 1.25rem;
+    padding: 0.8rem 1.25rem;
   }
 
   .wordmark {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 
   .nav-links {
@@ -956,13 +752,13 @@ main {
   }
 
   .tour-ui {
-    padding-top: 4.6rem;
+    padding-top: 4.4rem;
   }
 
   .tour-head {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.3rem;
+    gap: 0.25rem;
   }
 
   .tour-head h2 {
@@ -975,10 +771,8 @@ main {
 }
 
 @media (max-width: 60rem) {
-  .estate-grid,
-  .particulars-grid,
-  .location-grid,
-  .enquire-grid {
+  .backyard-grid,
+  .details-grid {
     grid-template-columns: 1fr;
   }
 
@@ -989,44 +783,41 @@ main {
   .tour-foot {
     flex-direction: column;
     align-items: stretch;
+    justify-content: flex-end;
   }
 
   .tour-caption {
     text-align: left;
     margin-left: 0;
     max-width: none;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+
+  .tour-caption .room-name {
+    font-size: var(--step-1);
   }
 
   .tour-caption .room-note {
-    margin-left: 0;
+    display: none;
   }
 
   .tour-controls {
+    margin-top: 0;
     justify-content: flex-start;
+    flex: none;
   }
 
   .room-rail {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.1rem 1.2rem;
+    gap: 0 1rem;
     order: 2;
-    margin-top: 1rem;
-  }
-
-  .hero-scrollcue {
-    display: none;
-  }
-
-  .material {
-    grid-template-columns: minmax(3.5rem, 4.5rem) minmax(0, 1fr);
-  }
-
-  .material p {
-    grid-column: 1 / -1;
-  }
-
-  .field-row {
-    grid-template-columns: 1fr;
+    margin-top: 0.7rem;
+    padding: 0.45rem 0.8rem;
   }
 }
 
@@ -1043,10 +834,5 @@ main {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .hero-scrollcue .rule::after {
-    animation: none;
-    transform: none;
   }
 }
